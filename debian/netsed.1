@@ -1,0 +1,130 @@
+'\" t
+.\"     Title: netsed
+.\"    Author: Mats Erik Andersson
+.\" Generator: DocBook XSL Stylesheets v1.75.2 <http://docbook.sf.net/>
+.\"      Date: June 19th, 2011
+.\"    Manual: NetSED
+.\"    Source: NetSED 1.00b
+.\"  Language: English
+.\"
+.TH "NETSED" "1" "June 19th, 2011" "NetSED 1\&.00b" "NetSED"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+netsed \- a network stream editor\&.
+.SH "SYNOPSIS"
+.HP \w'\fBnetsed\fR\ 'u
+\fBnetsed\fR {\fIproto\fR} {\fIlport\fR} {\fIrhost\fR} {\fIrport\fR} {\fIrule\fR} [\fIrule\fR\ \&.\&.\&.]
+.SH "DESCRIPTION"
+.PP
+
+\fBnetsed\fR
+is a small and handy utility to alter, in real time, the contents of packets forwarded in a network stream, or in a datagram connection\&. When called with a set of replacement rules, these rules are tested for applicability to each packet entering in either direction\&.
+.SH "ARGUMENTS"
+.PP
+\fIproto\fR
+.RS 4
+Determines the protocol for the desired connection: "tcp", "TCP", "udp", or "UDP"\&.
+.RE
+.PP
+\fIlport\fR
+.RS 4
+The local listening port for the connection\&. A service name, or a numerical port value, is acceptable\&.
+.RE
+.PP
+\fIrhost\fR
+.RS 4
+The remote host with whom the connection is desired\&. Resolvable host names and IPv4/IPv6 addresses are equally usable\&.
+.sp
+As a special case, assigning "0" to
+\fIrhost\fR
+will insert the kernel\*(Aqs knowledge of the targeted host address, in a situation where a netfilter rule is redirecting traffic\&. This happens when running a transparent proxy service\&.
+.RE
+.PP
+\fIrport\fR
+.RS 4
+The remote port to connect to\&. A service name, or a numerical port value, is acceptable\&.
+.sp
+Also here a value "0" will be acceptable to arrange a transparent proxy service, as the kernel\*(Aqs tracking will provide the intended remote port number\&.
+.RE
+.PP
+\fIrule\fR
+.RS 4
+At least one replacement rule is mandatory\&. The general syntax for this is:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+s/pat1/pat2[/num]
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+The effect is to replace the text that matches
+\fIpat1\fR
+with the expansion of
+\fIpat2\fR\&. The optional parameter
+\fInum\fR
+is a numerical value limiting the maximal number of times the rule can be applied\&. One could say that the rule
+\fIexpires\fR
+after
+\fInum\fR
+occurrences\&.
+.sp
+The rules are applied in succession to all passing packets, flowing in either direction\&. As soon as a rule has been expired, it is removed from the collection of active rules for the current connection\&. Observe that any counter is started as the connection is initiated, running as long as the connection is alive\&.
+.sp
+This holds directly for TCP connections, whereas for UDP a connection is considered to consist of incoming data on fixed address and fixed port together with any response from a remote server\&. When no datagrams have been transmitted for a period of 30 seconds, the UPD connection is seen as closed\&.
+.sp
+A single rule is limited to act on individual packets; a pattern can not match across packet boundaries\&.
+.sp
+Using HTTP\-like escape sequences for hexadecimal values, all eight\-bit characters are viable in the patterns\&. Thus the standard character pair CRNL would code as "%0a%0d"\&. In a pattern, the percentage sign itself must be escaped by duplication\&. Thus a string "%%" is interpreted in a pattern as a literal percentage sign\&.
+.RE
+.SH "EXAMPLES"
+.PP
+A handful replacement rules are handy as examples\&.
+.PP
+s/andrew/mike
+.RS 4
+Replace every occurrence of the string "andrew" with "mike", in every passing packet\&.
+.RE
+.PP
+s/andrew/mike/1
+.RS 4
+Replace only the first occurrence of the string "andrew" for "mike" in each packet\&. Any repetition is unaltered, unless a further rule specifies some replacement\&.
+.RE
+.PP
+s/andrew/mike%00%00
+.RS 4
+Replace in each packet every occurrence of the string "andrew" with "mike\ex00\ex00" \&. The padding with two null bytes ensures an unaltered packet length, which might be essential at times\&.
+.RE
+.PP
+s/%%/%2f/20
+.RS 4
+Replace the first twenty occurrences of the percentage character \*(Aq%\*(Aq with slashes \*(Aq/\*(Aq\&.
+.RE
+.SH "AUTHOR"
+.PP
+This text was initially compiled by Mats Erik Andersson as a Docbook source from the usage printout\&. Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Public License, version 2, or of a later version\&.
+.SH "COPYRIGHT"
+.br
+Copyright \(co 2010 Mats Erik Andersson
+.br

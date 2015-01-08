@@ -1,0 +1,18 @@
+Description: Make the makro LINUX_NETFILTER be conditionally active.
+ The unconditional setting of LINUX_NETFILTER causes FTBFS for
+ GNU/kfreebsd.
+Author: Mats Erik Andersson <debian@gisladisker.se>
+Forwarded: yes
+Last-Update: 2010-09-11
+--- netsed-1.00b/netsed.c.orig
++++ netsed-1.00b/netsed.c
+@@ -85,7 +85,9 @@
+ /// Define for transparent proxy with linux netfilter.
+ /// Else use getsockname() supposing the socket receive the original
+ /// destination information directly.
++#if __linux__
+ #define LINUX_NETFILTER
++#endif
+ 
+ #ifdef LINUX_NETFILTER
+ #include <limits.h>

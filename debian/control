@@ -1,0 +1,31 @@
+Source: netsed
+Section: net
+Priority: optional
+Maintainer: Mats Erik Andersson <mats.andersson@gisladisker.se>
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>= 8.0.0~), ruby
+Homepage: http://silicone.homelinux.org/projects/netsed/
+Vcs-Git: git://anonscm.debian.org/collab-maint/netsed.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/netsed.git
+DM-Upload-Allowed: yes
+
+Package: netsed
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: network packet-altering stream editor
+ NetSED is a small and handy utility designed to alter, in real time,
+ the contents of packets forwarded through your network. It is really
+ useful for network packet alteration, forging, or manipulation.
+ NetSED supports:
+ .
+   * black-box protocol auditing - whenever there are two or more
+     proprietary boxes communicating using some undocumented protocol.
+     By enforcing changes in ongoing transmissions, you will be able
+     to test if the examined application can be claimed secure;
+   * fuzz generating experiments, integrity tests - whenever you do
+     stability tests of an application to see how it cares for data
+     integrity;
+   * other common use-cases: deceptive transfers, content filtering,
+     protocol conversion - whatever best fits your task at hand.
+ .
+ It ideally complements a tool suite based on ngrep, netcat, and tcpdump.

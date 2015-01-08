@@ -1,0 +1,109 @@
+netsed (1.00b-2) unstable; urgency=low
+
+  * debian/control: Improve description.
+  * debian/rules: Remove my email address.
+  * debian/NEWS: New file.
+  * debian/netsed.1: Update manpage to give present capabilities.
+  * debian/patches/:
+    + 03-traditional_rule.diff: Less strict rule spelling.
+    + 04-check_dual_stack.diff: Avoid unintended dual family stack.
+
+ -- Mats Erik Andersson <mats.andersson@gisladisker.se>  Wed, 24 Aug 2011 20:54:28 +0200
+
+netsed (1.00b-1) unstable; urgency=low
+
+  [Arno Töll]
+
+  * Switch to dpkg-source format '3.0 (quilt)'.
+  * Write rules file from scratch, based on 'dh'.
+  * Compatibility and dependency on debhelper (>=8.0.0~).
+  * Bump standards to 3.9.2.
+
+  [Mats Erik Andersson]
+
+  * New maintainer. Thanks to all prior maintainers and contributors.
+    (Closes: #487339)
+  * debian/patches/:
+    + 01-cflag_inclusion.diff: Sense any exported CFLAGS.
+    + 02-ftbfs_kfreebsd.diff: Resolve FTBFS for GNU/kfreebsd.
+  * debian/copyright:
+    + Rewritten according to DEP-5.
+  * debian/watch:
+    + New file.
+  * debian/control:
+    + Homepage stanza.
+    + Vcs-*: New stanzas.
+    + Add ruby build dependency
+    + Reformulate description.
+
+  [Sven Hoexter]
+
+  * debian/control:
+    + Make the short description dev-ref compliant.
+    + Update Vcs-* stanzas.
+    + Add DM-Upload-Allowed: yes.
+
+  [Tim Retout]
+
+  * New upstream release from a new maintainer:
+    + Fix "netsed executes a tight non-blocking loop.": Change to new
+      upstream source. (Closes: #586037)
+    + Fix "hostnames resolved as 255.255.255.255", patch by Mats Erik
+      Andersson. (Closes: #397420)
+
+ -- Mats Erik Andersson <mats.andersson@gisladisker.se>  Fri, 10 Jun 2011 23:49:16 +0200
+
+netsed (0.01c-2.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * debian/rules: fix bashisms (use of {,}) (Closes: #375570) 
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Mon, 14 Jan 2008 15:16:15 +0100
+
+netsed (0.01c-2) unstable; urgency=low
+
+  * Manpage typos fixed.                            (closes: Bug#170847)
+
+ -- Lenart Janos <ocsi@debian.org>  Wed, 27 Nov 2002 14:14:45 +0100
+
+netsed (0.01c-1) unstable; urgency=medium
+
+  * Re-release under GPL (administrative).          (closes: Bug#166669)
+  * Upgraded Standards-Version.
+  * Removed debian/{postinst,prerm}.
+
+ -- Lenart Janos <ocsi@debian.org>  Mon, 25 Nov 2002 18:34:55 +0100
+
+netsed (0.01b-5) unstable; urgency=low
+
+  * Fixed buggy debian/{pre,post}{inst,rem}.        (closes: Bug#126957)
+
+ -- Lenart Janos <ocsi@debian.org>  Tue,  1 Jan 2002 19:51:31 +0100
+
+netsed (0.01b-4) unstable; urgency=low
+
+  * Typo fixed in the description.                  (closes: Bug#125183)
+
+ -- Lenart Janos <ocsi@debian.org>  Sat, 22 Dec 2001 16:13:00 +0100
+
+netsed (0.01b-3) unstable; urgency=low
+
+  * Adopted package.                                (closes: Bug#120654)
+  * Re-debianized from scratch.
+
+ -- Lenart Janos <ocsi@debian.org>  Sat, 24 Nov 2001 18:17:44 +0100
+
+netsed (0.01b-2) unstable; urgency=low
+
+  * Oops. Corrected debian/control, so long description refers to ngrep,
+    not netgrep (Closes: #112120)
+  * Bumped up Standards-Version while there
+
+ -- Gergely Nagy <algernon@debian.org>  Sat, 15 Sep 2001 15:45:44 +0200
+
+netsed (0.01b-1) unstable; urgency=low
+
+  * Initial release, for Master to take over the world
+  (Closes: #101959)
+
+ -- Gergely Nagy <algernon@debian.org>  Sat, 23 Jun 2001 10:47:53 +0200

@@ -1,0 +1,18 @@
+netsed (1.00b-2) unstable; urgency=low
+
+  An updated manual page has been generated directly
+  from my own Docbook source.
+
+ -- Mats Erik Andersson <mats.andersson@gisladisker.se>  Wed, 22 Jun 2011 20:20:19 +0200
+
+netsed (1.00b-1) unstable; urgency=low
+
+  This package is now based on the efforts of a new
+  upstream author, having forked the stale original,
+  and having continued the development from that point.
+
+  This makes the shipped manual page outdated, since I
+  myself am aiding upstream in writing the new documenta-
+  tion. It will enter only with the next upstream release.
+
+ -- Mats Erik Andersson <mats.andersson@gisladisker.se>  Sat, 11 Jun 2011 02:26:38 +0200

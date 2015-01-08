@@ -1,0 +1,3 @@
+version=3
+
+http://silicone.homelinux.org/release/netsed/netsed-([.0-9]+[a-z]?)\.tar\.gz

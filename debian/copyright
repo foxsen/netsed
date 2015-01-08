@@ -1,0 +1,33 @@
+Format: http://anonscm.debian.org/viewvc/dep/web/deps/dep5.mdwn?revision=174
+Upstream-Name: netsed
+Upstream-Contact: Julien Viard de Galbert <julien@silicone.homelinux.org>
+Source: http://silicone.homelinux.org/release/netsed/
+ In 2010 Julien Viard de Galbert officially forked the original dormant
+ software and began eliminating bugs and renewed the development.
+
+Files: *
+Copyright: 2002, Michal Zalewski <lcamtuf@ids.pl>
+           2010, Julien Viard de Galbert <julien@silicone.homelinux.org>
+License: GPL-2+
+
+Files: debian/*
+Copyright: 2001, Gergely Nagy <algernon@debian.org>
+           2001 - 2002, Lenart Janos <ocsi@debian.org>
+           2010, Tim Retout <diocles@debian.org
+           2010, Mats Erik Andersson <debian@gisladisker.se>
+           2011, Arno Töll <debian@toell.net>
+License: GPL-2+
+Comment: This package was debianized by Lenart Janos <ocsi@debian.org> from
+ scratch on Sat, 24 Nov 2001 18:25:49 +0100. It was originally debianized
+ by Gergely Nagy <algernon@debian.org> on Sat, 23 Jun 2001 10:47:53 +0200.
+ .
+ It was then downloaded from http://lcamtuf.na.export.pl/netsed.tgz.
+
+License: GPL-2
+ This package is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+ .
+ On Debian GNU/Linux systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/GPL-2'
