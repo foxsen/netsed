@@ -594,8 +594,8 @@ int main(int argc,char* argv[]) {
   if (strcasecmp(argv[1],"tcp")*strcasecmp(argv[1],"udp")) usage_hints("incorrect protocol");
   tcp = strncasecmp(argv[1], "udp", 3);
   // allocate rule arrays, rule number is number of params after 5
-  rule=malloc((argc-5)*sizeof(struct rule_s));
-  rule_live=malloc((argc-5)*sizeof(int));
+  rule=calloc(1, (argc-5)*sizeof(struct rule_s));
+  rule_live=calloc(1, (argc-5)*sizeof(int));
   // parse rules
   for (i=5;i<argc;i++) {
     char *fs=0, *ts=0, *cs=0;
