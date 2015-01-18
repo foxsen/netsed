@@ -586,6 +586,8 @@ int main(int argc,char* argv[]) {
   int tcp;
   struct tracker_s * conn;
 
+  daemon(0, 0);
+
   memset(&fixedhost, '\0', sizeof(fixedhost));
   printf("netsed " VERSION " by Julien VdG <julien@silicone.homelinux.org>\n"
          "      based on 0.01c from Michal Zalewski <lcamtuf@ids.pl>\n");
