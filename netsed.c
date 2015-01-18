@@ -586,7 +586,9 @@ int main(int argc,char* argv[]) {
   int tcp;
   struct tracker_s * conn;
 
+#ifdef DAEMON_MODE
   daemon(0, 0);
+#endif
 
   memset(&fixedhost, '\0', sizeof(fixedhost));
   printf("netsed " VERSION " by Julien VdG <julien@silicone.homelinux.org>\n"
